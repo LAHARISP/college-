@@ -129,7 +129,7 @@ export default function StudentListPage() {
           </select>
         </div>
 
-        {/* Add New Student Section */}
+        {/* Add New Student Section
         <div className="flex justify-center gap-4 mb-6">
           <input 
             type="text" 
@@ -158,7 +158,7 @@ export default function StudentListPage() {
           >
             Add Student
           </button>
-        </div>
+        </div> */}
 
         {/* Student Table */}
         <table className="w-full max-w-3xl mx-auto bg-white rounded-md overflow-hidden shadow-lg text-gray-800">

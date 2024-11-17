@@ -1,32 +1,36 @@
 import sql from 'mssql';
 
 const config = {
-  user: process.env.MSSQL_USER,
-  password: process.env.MSSQL_PASSWORD,
-  server: process.env.MSSQL_SERVER, // e.g., 'localhost' or server address
-  database: process.env.MSSQL_DATABASE,
-  options: {
-    encrypt: true, // For Azure
-    trustServerCertificate: true, // For local dev / self-signed certs
-  },
+    user: 'sa',
+    password: 'collegeproject',
+    server: 'localhost', // Use 'localhost' or actual server name
+    database: 'Course_Reg',
+    port: 1433, // Default SQL Server port
+    options: {
+        encrypt: false, // For local testing, set to false
+        trustServerCertificate: true,
+    },
+};
+
+let pool: sql.ConnectionPool | undefined;
+
+export async function connectToDatabase() {
+    if (!pool) {
+        try {
+            pool = await sql.connect(config);
+            console.log('Connected to database');
+        } catch (error) {
+            console.error('Database connection failed:', error);
+            throw new Error('Database connection failed');
+        }
+    }
+    return pool;
 }
 
-// Create a connection pool
-const pool = new sql.ConnectionPool(config)
-const poolConnect = pool.connect()
 
-// Function to get connection pool
-async function getConnection() {
-  await poolConnect
-  return pool
-}
-getConnection()
 
-export default async function handler(req, res) {
-  try {
-    const users = await executeQuery('SELECT * FROM students')
-    res.status(200).json(users)
-  } catch (error) {
-    res.status(500).json({ error: error.message })
-  }
-}
+
+
+
+
+

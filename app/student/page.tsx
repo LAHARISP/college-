@@ -28,7 +28,7 @@ export default function StudentDashboard() {
         <h2 className="text-3xl text-black font-bold text-center mb-12">STUDENT DASHBOARD</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          <Link href="/result">
+          <Link href="/results">
             <button 
               className="w-full py-6 px-4 text-base font-medium text-white rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-colors"
             >
